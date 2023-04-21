@@ -28,13 +28,16 @@ hundred:
   add $t1, $t1, 1
 
   bge $t0, 100, hundred
-  j ten
+  bgt $t0, 10, ten
+  bgt $t0, 0, unit
+  j success
 ten:
   sub $t0, $t0, 10
   add $t2, $t2, 1
 
   bge $t0, 10, ten
-  j unit
+  bgt $t0, 0, unit
+  j success
 
 unit:
   sub $t0, $t0, 1
