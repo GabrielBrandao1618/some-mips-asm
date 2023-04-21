@@ -28,15 +28,15 @@ hundred:
   add $t1, $t1, 1
 
   bge $t0, 100, hundred
-  bgt $t0, 10, ten
-  bgt $t0, 0, unit
+  bge $t0, 10, ten
+  bge $t0, 1, unit
   j success
 ten:
   sub $t0, $t0, 10
   add $t2, $t2, 1
 
   bge $t0, 10, ten
-  bgt $t0, 0, unit
+  bge $t0, 1, unit
   j success
 
 unit:
