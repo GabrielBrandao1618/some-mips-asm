@@ -14,9 +14,9 @@ main:
   move $t0, $v0
 
   bgt $t0, 50000, rangeError
-  blt $t0, 2, rangeError
+  blt $t0, 3, rangeError
 
-  li $t6, 2
+  sub $t6, $t0, 1
 
   j loopUntilNumber
   
@@ -25,19 +25,16 @@ loopUntilNumber:
   li $t7, 2
   jal isPrime
 
-
   beq $t2, 1, foundPrime
 
-  add $t6, $t6, 1
+  sub $t6, $t6, 1
 
-  blt $t6, $t0, loopUntilNumber
-  bgt $t5, 0, showPrime
+  bgt $t6, 1, loopUntilNumber
   j notFound
 
 foundPrime:
   move $t5, $t6
-  add $t6, $t6, 1
-  j loopUntilNumber
+  j showPrime
 
 showPrime:
   li $v0, 4
